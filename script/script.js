@@ -1,5 +1,7 @@
 let userAge = 10;
 
+let userAge = 25;
+
 
 let userName ="Alena";
 
