@@ -23,7 +23,17 @@
 
 
 
-// homework 3
+
+
+
+
+
+
+
+
+
+
+  // homework 3
 // task 1
 let fruit = 10;
 let vegetables = 20;
@@ -34,7 +44,7 @@ const vegetablesAmount = Number(prompt('How much vegetables?'));
 console.log('10<20', 10<20);
 if(userAnswer = 10<20){
     alert ('10 меньше чем 20');
-}   
+} 
 
 
 // task2
@@ -78,12 +88,3 @@ if (visitorAge >= minAge && maxAge || areYouWithParents ) {
 } else {
     console.log ('Access is denied');
 }
-
-
-
-
-
-
-
-
-
