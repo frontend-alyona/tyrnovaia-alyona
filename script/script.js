@@ -21,19 +21,7 @@
 // const greeting = 'Hello world';
 // console.log('greeting', greeting);
 
-
-
-
-
-
-
-
-
-
-
-
-
-  // homework 3
+// homework 3
 // task 1
 let fruit = 10;
 let vegetables = 20;
@@ -88,3 +76,15 @@ if (visitorAge >= minAge && maxAge || areYouWithParents ) {
 } else {
     console.log ('Access is denied');
 }
+
+
+
+
+
+
+
+
+
+
+
+  
