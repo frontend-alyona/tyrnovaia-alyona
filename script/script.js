@@ -25,8 +25,8 @@
 
 // homework 3
 // task 1
-let userFruit = 10;
-let userVegetables = 20;
+let fruit = 10;
+let vegetables = 20;
 
 const fruitAmount = Number(prompt('How much fruits?'));
 
