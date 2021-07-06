@@ -7,8 +7,7 @@ function sum(a, b) {
 let result = sum(5, 7);
 alert( result );
 
-  sum();
-  sum();
+  
 
 //  стрелoчная функция 
 const sum = (a, b) => a + b;
@@ -32,13 +31,13 @@ userData();
 
 // task3
 
-function pow(a, b) {
+function pow(a, b=3) {
     return a ** b;
   }
   let result = pow(2, 3);
   alert( result );
 
-  pow();
+  
 
 
 

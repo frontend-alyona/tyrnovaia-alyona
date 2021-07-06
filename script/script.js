@@ -1,9 +1,6 @@
 // homework 2
 // let userAge = 10;
 
-// let userage = 25;
-
-
 // let userName ="Alena";
 
 
@@ -23,59 +20,60 @@
 
 // homework 3
 // task 1
-let fruit = 10;
-let vegetables = 20;
+// const num1 = Number(prompt('write any number'));
+// const num2 = Number(prompt('write any number'));
 
-const fruitAmount = Number(prompt('How much fruits?'));
+// if(num1>num2){
+//     alert('the first number is greater than the second');
+// } else if(num1<num2){
+//     alert ('the first number is less than the second');
+// } else {
+//     alert ('numbers are equal');
 
-const vegetablesAmount = Number(prompt('How much vegetables?'));
-console.log('10<20', 10<20);
-if(userAnswer = 10<20){
-    alert ('10 меньше чем 20');
-} 
+// }
+    
+
+
+
+
 
 
 // task2
-let weeks = 7;
-let months = 12;
+// const number1 = Number(prompt('write any number'));
+// const number2 = Number(prompt('write any number'));
+// let result =0;
+// const operationResult = prompt('what operation you want to do?')
+ 
 
-const daysInAWeek = Number(prompt('How many days in a week?'));
-switch (daysInAWeek){
-    case 7:
-    alert ('Right!');
-    break;
-    default:
-    alert('Think a little bit more');  
-
-
-}
-const monthsInAYear = Number(prompt('How many months in a year?'));
-switch (monthsInAYear){
-    case 12:
-    alert ('You are right!');
-    break;
-    default:
-    alert('NOOOO!');
-}
- const num1 = 7;
- const num2 = 12;
- let result;
- result = num1 + num2;
- console.log ('7+12', result);
- alert('19');
+//     switch (operationResult){
+//         case "+": number1 + number2;
+//             break;
+//         case "-": number1 - number2;
+//             break;
+//         case "*": number1 * number2;
+//             break;
+//         case "/": number1 / number2;
+//             break;
+                       
+// }  
+// alert ('result', operationResult);     
 
 // task3
-const minAge = 12-18;
-const maxAge = 60-80;
-
 const visitorAge = Number(prompt('How old are you?'));
-const areYouWithParents = confirm('Are you with parents?');
+const isWithParents = confirm('Are you with parents?');
 
-if (visitorAge >= minAge && maxAge || areYouWithParents ) {
-    console.log ('Access is allowed');
-} else {
-    console.log ('Access is denied');
-}
+
+// if (visitorAge>=12 && visitorAge<=18){
+//     console.log ('Access is allowed');
+// } else(isWithParents) => {
+//     console.log ('Access is allowed');
+// } else if(visitorAge>=60 && visitorAge<=80){
+//     console.log ('Access is allowed');
+// } else {
+//     console.log ('Access is denied');
+// }
+
+
 
 
 
