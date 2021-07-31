@@ -1,18 +1,17 @@
 // task1 
 
 const validatePassword = (userPassword) => {
-    userPassword.length <=6 && userPassword.tolowerCase() !== userPassword
+    userPassword.length <=6 && userPassword.toLowerCase() && userPassword.toUpperCase() !== userPassword
         userPassword = prompt('enter your password');
         console.log('password must contain at least 6 symbols and letters')
 } 
     
 
 
-
+    
 const authorise =()=>{
-    let userName;
-    let userSurname;
-    let userPassword;
+    
+    
     
         do{
             userName = prompt('What is your name?');
@@ -24,13 +23,21 @@ const authorise =()=>{
                             
         } while (
             !userName && !userSurname && validatePassword(userPassword))
+
+            
+            
             
 }
                         
 
 const capitalize= (s) =>{
-    return s[0].toUpperCase() + s.slice(1).tolowerCase();
+    return s[0].toUpperCase() + s.slice(1).toLowerCase();
 }
+    let userName;
+    let userSurname;
+    let userPassword;
+
+    
 
 authorise();
 capitalize(userName);
