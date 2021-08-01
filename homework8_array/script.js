@@ -42,5 +42,17 @@
 // task 3
 
 
+// let arr = [2, 4, 0, 100, 4, 11, 2602, 36];
+
+// for (let n in arr) {
+//   console.log("arr." + n + " = " + arr[n]);
+// }
+
+
+    
+
+
+
+
 
 
