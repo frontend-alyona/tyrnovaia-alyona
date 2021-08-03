@@ -2,7 +2,7 @@
 
 
 
-function getQuantityTrue ( arr)  {
+const getQuantityTrue = ( arr) => {
     let clone = arr.slice(0),
         tested =[],
         current,
@@ -23,6 +23,7 @@ function getQuantityTrue ( arr)  {
 }
 
 
+
 getQuantityTrue ([true, false, false, false, true ]);
 getQuantityTrue ([ ]);
 
@@ -41,13 +42,16 @@ console.log(occurrences['ab']);
 
 // task 3
 
-
-let arr = [11, 25, 2, 4, 100, 36, 80];
-
-for (let n in arr) {
-  console.log("arr." + n + " = " + arr[n]);
+const getOddNum =(array) => {
+  for (let i = 0; i < array.length; i++) {
+    let item = array[i];
+    if(item % 2) 
+      console.log(item);
+  }
 }
 
+let arr = [4, 100, 36, 15, 80];
+getOddNum(arr);
 
            
                 
