@@ -98,3 +98,13 @@ console.log(arr)
  
 
 
+let newArr = arr.map((item) => item.toUpperCase());
+
+const ownMap = (array, cb) => {
+
+}
+
+const callback = (item) => item.toUpperCase()
+
+newArr = ownMap(arr, callback)
+
