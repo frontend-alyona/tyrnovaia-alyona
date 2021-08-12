@@ -1,21 +1,23 @@
 // task 1
 
-const trueArr = [true, false, false, false, true];
 
-const findTrue = (trueArr) => {
-  const trueQuantity = [];
-  for (let i = 0; i < trueArr.length; i++){
-    trueQuantity[trueArr[i]] = (trueQuantity[trueArr[i]] || 0) + 1;
+
+const findTrue  = (ar) => {
+  let quantity = 0;
+  ar.filter((i) => {
+    if (i === true) { quantity++ }
+  })
+  console.log(quantity)
   }
+   
   
-  console.log(trueQuantity[true]);
-  console.log([]);
-}
+  findTrue([true, false, false, true, false]); 
+  
+  findTrue([false, false, false, false]); 
+  
+  findTrue([]); 
 
-findTrue(trueArr);
 
-/* работает, но не совсем так как нужно. Если массив состоит из false,
-то консоль показывает undefined */
  
 
 
@@ -35,29 +37,31 @@ console.log(occurrences['ab']);
 
 elemQuantity(arr);
 
-// task 3
+// task 3 +
 
-const getOddNum =(array) => {
-  for (let i = 0; i < array.length; i++) {
-    let item = array[i];
-    if(item % 2) 
-    
-      console.log(item);
-    
-  }
-  for (let j =0; j < array.length; j++){
-    let item2 = array2[j];
-    if ((item2 % 2 )!=1)
+function getOddNum (array) {
+  let findOddNum;
+  let odd = [];
+  let even = [];
 
-    console.log (item2);
-    
+  array.forEach(function(i) {
+      if (i % 2 === 0) even.push(i);
+      else odd.push(i);
+  });
+
+  if (odd.length !== 1 && even.length !== 1) {
+  } else {
+    findOddNum = (odd.length === 1 ? odd[0] : even[0]);
   }
+  console.log(findOddNum);
 }
 
-let array = [4, 100, 36, 15, 80];
-let array2 = [3,17, 29, 33, 100];
-getOddNum(array);
-getOddNum (array2);
+getOddNum([0, 1, 2]); 
+getOddNum([1, 2, 3]); 
+getOddNum([2, 6, 8, 10, 3]); 
+getOddNum([0, 0, 3, 0, 0]); 
+getOddNum([1, 1, 0, 1, 1]); 
+
 
 
 
