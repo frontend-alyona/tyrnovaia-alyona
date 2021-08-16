@@ -19,65 +19,36 @@ const products = [
     },
   ];
 
-  const productCard = (title, subtitle, list) => {
-    const productContainer = document.createElement("div");    /*container*/
-    const titleElement = document.createElement("h1");
-    const subtitleElement = document.createElement("h3");
-    const listContainer = document.createElement("div");
-    const unmarkedList = document.createElement('ul');
-   
+  const createProductCard = (arr) => {
+    const productContainer = document.createElement('div')
+    const titleProduct = document.createElement('h1')
+    const subtitleProduct = document.createElement('h3')
+    const listContainer = document.createElement('div')
+    const list = document.createElement('ul');
 
-    titleElement.innerText = title;
-    subtitleElement.innerText = subtitle;
-    unmarkedList.innerText = list;
+    titleProduct.innerText = 
+    subtitleProduct.innerText = 
 
-    unmarkedList.forEach((list) => {
-            const listItem = document.createElement('li');
-            listItem.innerText = list;
-        
-            list.append(listItem);
-          })
+    
 
-    productContainer.append(titleElement, subtitleElement, listContainer);
-    console.dir(productContainer);
+    arr.forEach((item) => {
+      const listItem = document.createElement('li');
+      listItem.innerText = item;
+      
+      list.append(listItem);
 
-        return productContainer;
+      listContainer.append(list)
+
+      productContainer.append(titleProduct, subtitleProduct, listContainer);
+  console.log(productContainer);
+
+  return productContainer;
+    })
+
+    
+
+    document.body.append(productContainer);
 
   }
 
-  const productItemElement = productCard(
-    {
-    name: "Iphone 12",
-    brand: "Apple",
-    price: 3200000,
-    properties: ["Best camera", "Fast memory", "Apple A12 Processor"],
-  });
-  document.body.append(productItemElement);
-
-
-
-// const productCard = (title, subtitle, list) => {
-//     const productContainer = document.createElement("div");
-  
-//     productContainer.innerHTML = `
-//       <h1>${title}</h1>
-//       <h3>${subtitle}</h3>
-
-//       <div>
-//         ${list.map((listItem) => `<ul>${listItem}</ul>`).join("")}
-//       <div>
-//       `;
-  
-//     return productContainer;
-//   };
-  
-//   const productItemElement = productCard(
-//       {
-//         name: "Iphone 12",
-//         brand: "Apple",
-//         price: 3200000,
-//         properties: ["Best camera", "Fast memory", "Apple A12 Processor"]
-//      }
-//    );
-  
-//   document.body.append(productItemElement);
+  createProductCard(products);
