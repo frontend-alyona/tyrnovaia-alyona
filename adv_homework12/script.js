@@ -1,31 +1,30 @@
+let tooltipElem;
 
-
-const createTooltip =() => {
-    tooltipContainer = document.createElement('div');
-     tooltipButton = document.createElement('button');
-     tooltipButton.style = "position:absolute; background: red; padding: 20px 40px";
-     tooltipButton.className = "tooltip";
-
-    tooltipContainer.append(tooltipButton);
+document.onmouseover = function(event) {
+    let target = event.target;
     
-    document.body.append(tooltipContainer);
-
-
-    const buttonCoords = button.getBoundingClientRect();
-    console.log(buttonCoords);
-
-
-    tooltipButton.style.left = '215px';
-    tooltipButton.style.top = '150px';
+    tooltipElem = document.createElement('div');
+    tooltipElem.className = 'tooltip';
+    tooltipElem.innerText = 'I am a tooltip';
+    document.body.append(tooltipElem);
     
+    let coords = target.getBoundingClientRect();
+    
+    let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
+    let top = coords.top - tooltipElem.offsetHeight - 20;
+    
+    tooltipElem.style.left = left + 'px';
+    tooltipElem.style.top = top + 'px';
+};
 
-    const tooltipCoords = tooltipButton.getBoundingClientRect();
-    console.log(tooltipCoords);
-      
-}
+document.onmouseout = function(e) {
 
+    if (tooltipElem) {
+      tooltipElem.remove();
+      tooltipElem = null;
+    }
 
-createTooltip( );
+};
 
 
 

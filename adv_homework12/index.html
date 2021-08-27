@@ -9,11 +9,21 @@
         .body{
             position: relative;
         }
-        .btn{
+        .button{
             margin: 210px;
-            padding: 10px;
             
         }
+        .tooltip {
+      position: absolute;
+      padding: 10px 20px;
+      border: 1px solid #b3c9ce;
+      border-radius: 4px;
+      text-align: center;
+      font: italic 14px/1.3 sans-serif;
+      color: #333;
+      background: #fff;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+    }
 
       </style>
 
@@ -27,7 +37,7 @@
     
   
     <div id="button" class="button">
-        <button class="btn"> я кнопка</button>
+        <button data-tooltip="I am a tooltip">I am a button</button>
     </div>
     
 
