@@ -1,57 +1,75 @@
-const createForm =( ) => {
-    const container = document.createElement('container');
-    const formElem = document.createElement('form');
-    formElem.id = 'form';
-    formElem.style = 'padding:100px' ;
+const divInputLogin = document.createElement('div');
+divInputLogin.style = 'padding-bottom:20px';
+const loginLabel = document.createElement("label");
+const loginInput = document.createElement("input");
+loginInput.id = ("login");
 
-    const divInputLogin = document.createElement('div');
-    divInputLogin.style = 'padding-bottom:20px';
+const divInputAge = document.createElement('div');
+divInputAge.style = 'padding-bottom:20px';
+const ageLabel = document.createElement("label");
+const ageInput = document.createElement("input");
+ageInput.id =("age");
 
-    const divInputAge = document.createElement('div');
-    divInputAge.style = 'padding-bottom:20px';
+const containerForm = document.createElement("form");
 
-    divInputLogin.innerHTML = `
-    <label for="login">Login</label>
-    <input type="text" name="login" id="login" placeholder="" />
-    `
-    
-    divInputAge.innerHTML = `
-    <label for="age">Age</label>
-    <input type="text" name="age" id="age" placeholder="" />
-    `
-    
-    formElem.innerHTML = `
-    <p>Select the programming language</p>
-    <select id="select">
-        <option value="Javascript">Javascript</option>
-        <option value="Java">Java</option>
-        <option value="Python">Python</option>
-      </select>
-    
-    <button type="submit">Submit</button>
-    `
-    formElem.prepend(divInputLogin, divInputAge)
+const divSelect = document.createElement('div');
+const selectLabel = document.createElement("label");
+const select = document.createElement("select");
+select.id =("language");
+const option = document.createElement("option");
 
-    container.append(formElem);
-    
-    document.body.append(container)
-}
-createForm();
-
-const form = document.getElementById("form");
+const submitBtn = document.createElement("button");
 
 const handleSubmit = (event) => {
     event.preventDefault();
 
-    const formValues = {
-        login: login.value,
+    const formValues = [{
+        login: login.value, 
         age: age.value,
-        select: select.value,
-      };
-    
-      console.log(`formValues`, formValues);
-};
+        select: language.value,
+        
+      }];
 
-form.addEventListener("submit", handleSubmit);    
+      console.log(`formValues`, formValues);
+}
+
+const renderForm = () => {
+    divInputLogin.append(loginLabel, loginInput);
+    loginLabel.setAttribute("for", "accesskey");
+    loginInput.setAttribute("placeholder", "");
+
+    divInputAge.append(ageLabel, ageInput);
+    ageLabel.setAttribute("for", "accesskey");
+    ageInput.setAttribute("placeholder", "");
+
+    divSelect.append(selectLabel, select, option);
+    selectLabel.setAttribute("for", "accesskey")
+    select.setAttribute("name", "id");
+    option.setAttribute("value", "selected");
+
+    submitBtn.innerText = "Submit";
+    loginLabel.innerText = "Login";
+    ageLabel.innerText = "Age";
+    // selectLabel.innerText = "Выберите язык программирования";
+    divSelect.innerHTML = `
+        <label for="language">Выберите язык программирования</label>
+        <select name="language" id="language">
+        <option value="Js">Javascript</option>
+        <option value="Java">Java</option>
+        <option value="Python">Python</option>
+        </select>
+    `
+    
+  
+  containerForm.append(divInputLogin, divInputAge, divSelect, submitBtn);
+  containerForm.addEventListener("submit", handleSubmit);
+    document.body.append(containerForm);
+};
+renderForm()
+
+
+
+containerForm.addEventListener("submit", handleSubmit);
+
 
 
