@@ -1,25 +1,23 @@
 
 .text{
-    padding-left: 620px;
+    padding-left: 650px;
     color: rgb(138, 5, 5);
     font-size: 30px;
     font-weight: bold;
 }
-#gallery{
-    width: 640px;
-    margin: 20px auto;
-    padding-left: 200px;
-    
+img {
+    width: 350px;
+    height: 500px;
 }
-
-#gallery .photos img{
-    width: 50%;
+.slide{
     display: none;
+    margin: 0 auto;
+    text-align: center;
+}
+.active{
+    display: block!important;
 }
 
-#gallery .photos img:first-child{
-    display: block;
-}
 
 .prev, .next{
     color: #fff;
@@ -41,5 +39,5 @@
 
 .buttons {
     margin-top: 20px;
-    margin-left: 85px;
+    margin-left: 650px;
 } 

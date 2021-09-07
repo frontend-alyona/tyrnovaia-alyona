@@ -1,25 +1,35 @@
-let btnPrev = document.querySelector('#gallery .buttons .prev');
-let btnNext = document.querySelector('#gallery .buttons .next');
-let images = document.querySelectorAll('#gallery .photos img');
+let btnPrev = document.querySelector('.prev');
+let btnNext = document.querySelector('.next');
 
-let i = 0; 
-    
+let slideIndex = 0;
+const images = document.querySelectorAll('.slide');
 
-if(i >= images.length){
-    i = 0; 
-
-}
-
-
-const handleClick = (event) => {
-    images[i].style.display = 'none';
-    i = i - 1;
-    if(i < 0){
-        i = images.length - 1;
+const activeSlide = (i) => {
+    for (let slide of images ){
+        slide.classList.remove('active')
     }
-    images[i].style.display = 'block';
+        images[i].classList.add('active')
+};
+
+const handleNext = (event) => {
+    if (slideIndex == images.length - 1) {
+        slideIndex = 0;
+        activeSlide (slideIndex);
+    } else {
+        slideIndex ++;
+        activeSlide(slideIndex);
+    }
 }
-    btnPrev.addEventListener('click', handleClick) ;
-    btnNext.addEventListener('click', handleClick) ;
 
+const handlePrev = (event) => {
+    if (slideIndex == images.length - 1) {
+        slideIndex = 0;
+        activeSlide (slideIndex);
+    } else {
+        slideIndex --;
+        activeSlide(slideIndex);
+    }
+};
 
+btnNext.addEventListener('click', handleNext);
+btnPrev.addEventListener('click', handlePrev);
