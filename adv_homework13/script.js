@@ -22,11 +22,12 @@ const handleNext = (event) => {
 }
 
 const handlePrev = (event) => {
-    if (slideIndex == images.length - 1) {
-        slideIndex = 0;
+    if (slideIndex == 0) {
+        slideIndex = images.length -1 
         activeSlide (slideIndex);
     } else {
         slideIndex --;
+        
         activeSlide(slideIndex);
     }
 };
