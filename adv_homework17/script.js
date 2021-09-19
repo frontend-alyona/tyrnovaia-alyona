@@ -1,5 +1,5 @@
 
-let secondCount = 5;
+let timer = 5;
 
 let stopWatch;
 
@@ -7,9 +7,9 @@ const displayPara = document.querySelector('.clock');
 
 
 function displayCount() {
-    let hours = Math.floor(secondCount/3600);
-    let minutes = Math.floor((secondCount % 3600)/60);
-    let seconds = Math.floor(secondCount % 60)
+    let hours = Math.floor(timer/3600);
+    let minutes = Math.floor((timer % 3600)/60);
+    let seconds = Math.floor(timer % 60)
 
    
     let displayHours = (hours < 10) ? '0' + hours : hours;
@@ -20,7 +20,7 @@ function displayCount() {
   displayPara.textContent = displayHours + ':' + displayMinutes + ':' + displaySeconds;
 
   
-  secondCount--;
+  timer--;
 }
 
 
@@ -45,15 +45,21 @@ stopBtn.addEventListener('click', () => {
 
 
 displayCount();
-const sleep = (delay) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve()
-      }, delay)
-    })
-  }
+
+// const showTimeEnd = (displayCount) => {
+//     return new Promise((resolve) => {
+//       if(secondCount === 0){
+//         showTimeEnd(7000).then(() => console.log('Time is up'));
+//       }
+//       setTimeout(() => {
+//         resolve()
+//       }, displayCount)
+//     })
+//   }
   
-  sleep(7000).then(() => console.log('Time is up'))
+  // showTimeEnd(7000).then(() => console.log('Time is up'))
+
+
 
 
 
