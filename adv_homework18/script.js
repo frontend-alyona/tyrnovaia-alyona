@@ -1,45 +1,67 @@
+
+
+const showBtn = document.getElementById('showComment');
+const hideBtn = document.getElementById('hideComment');
+
+
+
+const renderPosts = (title, body) => {
+  const titleElem = document.createElement('h4');
+  const bodyElem = document.createElement('p');
+  
+
+  titleElem.innerText = title;
+  bodyElem.innerText = body;
+
+  document.body.append(titleElem,bodyElem);
+
+}
+
+// renderPosts()
+
+const postXhr = new XMLHttpRequest();
 const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
 
+postXhr.open("GET", `${BASE_URL}`);
+postXhr.responseType = "json";
+postXhr.send();
 
-const form = document.getElementById("findPostForm");
-const postIdInput = document.getElementById("postId");
-const postContainer = document.getElementById("postContainer");
+postXhr.onload = () => {
+  const { response: post } = postXhr;
+  console.log(`post`, post);
 
-const renderPost = ({text}) => {
-    console.log("finding post..");
-    
-    const textParagraph = document.createElement("p");  
-    textParagraph.innerText = text;
-     
-    
-    postContainer.innerHTML = "";
-    postContainer.append( textParagraph);
 };
 
 
+const handleShowBtn = (event) => {
+  event.preventDefault()
 
-const handleFindPost = (event) => {
-    event.preventDefault();
+    const getCommentByIdRequest = new XMLHttpRequest();
 
-    const postId = postIdInput.value;
+    getCommentByIdRequest.open("GET", `${BASE_URL}/1/comments`);
+    getCommentByIdRequest.responseType = "json";
+    getCommentByIdRequest.send();
   
-    const getPostByIdRequest = new XMLHttpRequest();
-    getPostByIdRequest.open("GET", `${BASE_URL}/{postId}/comments`);
-    getPostByIdRequest.responseType = "json";
-    getPostByIdRequest.send();
-  
-    getPostByIdRequest.onload = () => {
-      const { status } = getPostByIdRequest;
-  
-      if (status === 200) {
-        renderPost(getPostByIdRequest.response);
-      } else {
-        alert("Post is not found!");
-      }
-    };
+    getCommentByIdRequest.onload= () => {
+      const {response :comments} = getCommentByIdRequest;
+      console.log(`comments`, comments)
+    }
 
-    
-};
+  
+}
 
-form.addEventListener("submit", handleFindPost);
+showBtn.addEventListener('click', handleShowBtn)
+
+// const getCommentByIdRequest = new XMLHttpRequest();
+
+//   getCommentByIdRequest.open("GET", `${BASE_URL}/1/comments`);
+//   getCommentByIdRequest.responseType = "json";
+//   getCommentByIdRequest.send();
+
+//   getCommentByIdRequest.onload= () => {
+//     const {response :comments} = getCommentByIdRequest;
+//     console.log(`comments`, comments)
+//   }
+
+
 
