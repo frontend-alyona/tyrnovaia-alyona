@@ -1,23 +1,21 @@
+// const hideBtn = document.getElementById('hideComment');
 
+const renderPosts = (post) => {
+  const {title, body} = post;
 
-const showBtn = document.getElementById('showComment');
-const hideBtn = document.getElementById('hideComment');
-
-
-
-const renderPosts = (title, body) => {
-  const titleElem = document.createElement('h4');
+  const postContainer = document.createElement('div');
+  const titleElem = document.createElement('h2');
   const bodyElem = document.createElement('p');
-  
 
   titleElem.innerText = title;
   bodyElem.innerText = body;
 
-  document.body.append(titleElem,bodyElem);
+  postContainer.append(titleElem, bodyElem);
 
-}
+  document.body.prepend(postContainer)
+};
 
-// renderPosts()
+const showBtn = document.getElementById('showComment');
 
 const postXhr = new XMLHttpRequest();
 const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
@@ -28,40 +26,35 @@ postXhr.send();
 
 postXhr.onload = () => {
   const { response: post } = postXhr;
+  const {postId} = post;
   console.log(`post`, post);
+
+    
+
+  
 
 };
 
 
 const handleShowBtn = (event) => {
-  event.preventDefault()
+  event.preventDefault() ;
 
-    const getCommentByIdRequest = new XMLHttpRequest();
+  const commentXhr = new XMLHttpRequest();
+  commentXhr.open("GET",`${BASE_URL}/${1}/comments` );
+  commentXhr.responseType = 'json';
+  commentXhr.send();
 
-    getCommentByIdRequest.open("GET", `${BASE_URL}/1/comments`);
-    getCommentByIdRequest.responseType = "json";
-    getCommentByIdRequest.send();
-  
-    getCommentByIdRequest.onload= () => {
-      const {response :comments} = getCommentByIdRequest;
-      console.log(`comments`, comments)
-    }
+  commentXhr.onload =() => {
+    console.log(`commentXhr.response`, commentXhr.response);
+    const comment = commentXhr.response
+    
+    
+  }
+  renderPosts(post,comment)
+} 
+// renderPosts(post,comment)
 
-  
-}
+showBtn.addEventListener('click', handleShowBtn);
 
-showBtn.addEventListener('click', handleShowBtn)
-
-// const getCommentByIdRequest = new XMLHttpRequest();
-
-//   getCommentByIdRequest.open("GET", `${BASE_URL}/1/comments`);
-//   getCommentByIdRequest.responseType = "json";
-//   getCommentByIdRequest.send();
-
-//   getCommentByIdRequest.onload= () => {
-//     const {response :comments} = getCommentByIdRequest;
-//     console.log(`comments`, comments)
-//   }
-
-
+ 
 
