@@ -1,21 +1,72 @@
-// const hideBtn = document.getElementById('hideComment');
-
 const renderPosts = (post) => {
-  const {title, body} = post;
-
+  const {title, body, id} = post;
+  
+  
   const postContainer = document.createElement('div');
+  postContainer.classList.add('containerPosts');
   const titleElem = document.createElement('h2');
   const bodyElem = document.createElement('p');
 
+  const showBtnElem = document.createElement('button');
+  
+  
   titleElem.innerText = title;
   bodyElem.innerText = body;
 
-  postContainer.append(titleElem, bodyElem);
+  showBtnElem.innerText = 'Show Comment';
+  showBtnElem.classList.toggle('btnHideComment');
+  
+  
+  postContainer.append(titleElem, bodyElem, showBtnElem);
 
-  document.body.prepend(postContainer)
+  
+  document.body.append(postContainer);
+
+  showBtnElem.addEventListener('click', (event) =>{
+    event.preventDefault()
+
+    if(showBtnElem.innerText == 'Show Comment' ){
+      showBtnElem.innerText = 'Hide Comment'
+    } else{
+      showBtnElem.innerText = 'Show Comment'
+    };
+
+
+    if (!postContainer.style.display == 'none'){
+      postContainer.style.display="none";
+    } else{
+      postContainer.style.display="block";
+    }
+
+    const commentXhr = new XMLHttpRequest();
+    commentXhr.open("GET",`${BASE_URL}/${id}/comments` );
+    commentXhr.responseType = 'json';
+    commentXhr.send();
+
+    commentXhr.onload =() => {
+      const {response: comments} = commentXhr;
+      console.log(`comments`, comments);
+
+      comments.forEach((comments) => renderComment(comments))
+
+      
+    };
+
+    const renderComment =(comments) => {
+      const {body, id} = comments;
+      const bodyElemComm = document.createElement('p');
+      bodyElemComm.innerText = body;
+      postContainer.append(bodyElemComm)
+      document.body.append(postContainer, `${id}`);
+    }
+
+    
+    
+    
+
+  });
+
 };
-
-const showBtn = document.getElementById('showComment');
 
 const postXhr = new XMLHttpRequest();
 const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
@@ -25,36 +76,17 @@ postXhr.responseType = "json";
 postXhr.send();
 
 postXhr.onload = () => {
-  const { response: post } = postXhr;
-  const {postId} = post;
-  console.log(`post`, post);
+  const { response: posts } = postXhr;
+  const {id} = posts;
+  console.log(`posts`, posts);
 
-    
-
+  posts.forEach((postElem) => renderPosts(postElem));
+  
   
 
 };
 
 
-const handleShowBtn = (event) => {
-  event.preventDefault() ;
-
-  const commentXhr = new XMLHttpRequest();
-  commentXhr.open("GET",`${BASE_URL}/${1}/comments` );
-  commentXhr.responseType = 'json';
-  commentXhr.send();
-
-  commentXhr.onload =() => {
-    console.log(`commentXhr.response`, commentXhr.response);
-    const comment = commentXhr.response
-    
-    
-  }
-  renderPosts(post,comment)
-} 
-// renderPosts(post,comment)
-
-showBtn.addEventListener('click', handleShowBtn);
 
  
 
