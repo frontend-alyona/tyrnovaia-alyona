@@ -3,6 +3,9 @@ const renderPosts = (post) => {
   
   
   const postContainer = document.createElement('div');
+  const commentContainer = document.createElement('div');
+  commentContainer.classList.add('containerComment');
+  // commentContainer.style.display = 'none';
   postContainer.classList.add('containerPosts');
   const titleElem = document.createElement('h2');
   const bodyElem = document.createElement('p');
@@ -14,29 +17,36 @@ const renderPosts = (post) => {
   bodyElem.innerText = body;
 
   showBtnElem.innerText = 'Show Comment';
-  showBtnElem.classList.toggle('btnHideComment');
+  // showBtnElem.classList.toggle('btnHideComment');
+  showBtnElem.classList.add('btnShowHideComment');
+  showBtnElem.classList.remove('btnShowHideComment');
+  showBtnElem.classList.toggle('btnShowHideComment');
   
   
-  postContainer.append(titleElem, bodyElem, showBtnElem);
+  postContainer.append(titleElem, bodyElem, showBtnElem,commentContainer);
 
   
   document.body.append(postContainer);
 
   showBtnElem.addEventListener('click', (event) =>{
-    event.preventDefault()
+    event.preventDefault();
+    
 
     if(showBtnElem.innerText == 'Show Comment' ){
-      showBtnElem.innerText = 'Hide Comment'
+      showBtnElem.innerText = 'Hide Comment' ;
     } else{
-      showBtnElem.innerText = 'Show Comment'
+      showBtnElem.innerText = 'Show Comment' 
     };
-
-
-    if (!postContainer.style.display == 'none'){
-      postContainer.style.display="none";
-    } else{
-      postContainer.style.display="block";
+    if (commentContainer.style.display != 'block'){
+      commentContainer.style.display == 'block'
+    } else {
+      commentContainer.style.display == 'none'
     }
+
+
+    
+
+    
 
     const commentXhr = new XMLHttpRequest();
     commentXhr.open("GET",`${BASE_URL}/${id}/comments` );
@@ -56,8 +66,8 @@ const renderPosts = (post) => {
       const {body, id} = comments;
       const bodyElemComm = document.createElement('p');
       bodyElemComm.innerText = body;
-      postContainer.append(bodyElemComm)
-      document.body.append(postContainer, `${id}`);
+      commentContainer.append(bodyElemComm)
+      // document.body.append(postContainer, `${comments}`);
     }
 
     
