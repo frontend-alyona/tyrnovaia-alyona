@@ -19,37 +19,6 @@ const renderData = (country_name, country_capital, currency, flag) => {
     containerData.append(countryName, countryCapital, currencyElem, flagElem)
     document.body.append(containerData);
 }
-// async function getData() {
-//     let response = await fetch('https://ipapi.co/json/');
-    
-//     if (response.ok) {
-//       let data = await response.json();
-//       renderData(data)
-//       console.log('data',data);
-//        getFlag()
-      
-//       // console.log(`flagResp`, flagResp)
-//       return data
-      
-//     } else {
-//       alert('error', response.status);
-//     }
-//    }
-   
-// getData();
-
-// async function getFlag () {
-//   let responseFlag = await fetch(`https://restcountries.com/v3.1/name/{ukraine}`);
-  
-//   if (responseFlag.ok) {
-//     let flag = await responseFlag.json();
-  
-//     console.log('flag',flag);
-//     return flag
-//   } else {
-//     alert('error', responseFlag.status);
-//   }
-// }
 
 const getCountryData = async() => {
   const responseIP = await fetch (`${urlCountry}`);
@@ -68,103 +37,103 @@ getCountryData()
 
 // task 2
 
-// const swapiDev = 'https://swapi.dev/api/people';
+const swapiDev = 'https://swapi.dev/api/people';
 
-// const container = document.getElementById('container');
-// const findCharacterBtn = document.getElementById('btn')
-// const form = document.getElementById('form');
-// const inputCharacter = document.getElementById('characterId');
+const container = document.getElementById('container');
+const findCharacterBtn = document.getElementById('btn')
+const form = document.getElementById('form');
+const inputCharacter = document.getElementById('characterId');
 
-// const renderCharacter = (characterName) => {
-//   const {name}= characterName;
-//   const nameCharacter = document.createElement('h2');
+const renderCharacter = (characterName) => {
+  const {name}= characterName;
+  const nameCharacter = document.createElement('h2');
   
-//   nameCharacter.innerText = name;
+  nameCharacter.innerText = name;
   
-//   const showFilmsBtn = document.createElement('button');
-//   showFilmsBtn.classList.add('showBtn')
-//   showFilmsBtn.innerText = 'Show Films'
+  const showFilmsBtn = document.createElement('button');
+  showFilmsBtn.classList.add('showBtn')
+  showFilmsBtn.innerText = 'Show Films'
     
-//   container.append(nameCharacter, showFilmsBtn);
-//   document.body.append(container)
+  container.append(nameCharacter, showFilmsBtn);
+  document.body.append(container)
 
-//   showFilmsBtn.addEventListener('click', () => {
-//     const characterId=inputCharacter.value
+  showFilmsBtn.addEventListener('click', () => {
+    const characterId=inputCharacter.value
 
-//     const title = async (url)=>{
-//       const titleResponse = await fetch (url)
-//       const titleResult = await titleResponse.json();
-//       const {title} = titleResult;
+    const title = async (url)=>{
+      const titleResponse = await fetch (url)
+      const titleResult = await titleResponse.json();
+      const {title} = titleResult;
 
-//       const cardContainer = document.createElement('div');
-//       cardContainer.classList.add('card');
-//       const text = document.createElement('p');
-//       text.innerText = title;
-//       cardContainer.append(text)
-//       document.body.append(cardContainer)
-//       console.log(`title`, title)
-//     }
+      const cardContainer = document.createElement('div');
+      cardContainer.classList.add('card');
+      const text = document.createElement('p');
+      text.innerText = title;
+      cardContainer.append(text)
+      document.body.append(cardContainer)
+      console.log(`title`, title)
+    }
     
     
     
-//     const getFilms = async (characterId) => {
+    const getFilms = async (characterId) => {
       
-//       const responseFilms = await fetch(`${swapiDev}/${characterId}`);
-//       const resultFilms = await responseFilms.json();
-//       console.log(`resultFilms`, resultFilms)
+      const responseFilms = await fetch(`${swapiDev}/${characterId}`);
+      const resultFilms = await responseFilms.json();
+      console.log(`resultFilms`, resultFilms)
 
-//       const{films} = resultFilms;
-//       const arr = await films.map((film) => {
-//         return new Promise ((resolve) => {
-//           resolve(film)
-//         })
-//       })
-//       console.log(`arr`, arr)
+      const{films} = resultFilms;
+      const arr = await films.map((film) => {
+        return new Promise ((resolve) => {
+          resolve(film)
+        })
+      })
+      console.log(`arr`, arr)
 
-//       Promise.all(arr).then((film) => {
-//         film.forEach((url)=> {
-//           title(url)
-//         })
-//         console.log(`film`, film)
+      Promise.all(arr).then((film) => {
+        film.forEach((url)=> {
+          title(url)
+        })
+        console.log(`film`, film)
 
-//       })
+      })
 
       
 
-//     }
-//     getFilms(characterId)
+    }
+    getFilms(characterId)
 
     
-//   })
+  })
 
-// };
+};
 
-// findCharacterBtn.addEventListener('click', () => {
+findCharacterBtn.addEventListener('click', () => {
 
-//   const characterId=inputCharacter.value
+  const characterId=inputCharacter.value
 
-//   async function getCharacterName (){
-//     let response = await fetch (`${swapiDev}/${characterId}`);
+  async function getCharacterName (){
+    let response = await fetch (`${swapiDev}/${characterId}`);
 
-//     const update = container.querySelector('.card');
-//     if (update){
-//       update.remove()
-//     }
-//     if (response.ok) {
-//       let characterName = await response.json();
-//       renderCharacter(characterName)
-//       console.log('characterName',characterName);
-//       return characterName
-//     } else {
-//       alert('error', response.status);
-//     }
-//   }
-//   getCharacterName()
+    const update = container.querySelector('.card');
+    if (update){
+      update.remove()
+    }
+    if (response.ok) {
+      let characterName = await response.json();
+      renderCharacter(characterName)
+      console.log('characterName',characterName);
+      return characterName
+    } else {
+      alert('error', response.status);
+    }
+  }
+  getCharacterName()
 
   
 
  
-// });
+});
 
 
 
