@@ -1,3 +1,5 @@
+
+
 const BASE_URL = 'https://jsonplaceholder.typicode.com/posts';
 
 const postXhr = new XMLHttpRequest();
