@@ -1,21 +1,24 @@
-// const urlCountry = "https://ipapi.co/json/";
-// const urlFlag = "https://restcountries.com/v2"
 
-// const renderData = (data) => {
-//     const containerData = document.createElement('div');
-//     const{country_name, country_capital, currency} = data;
+// task 1
 
-//     const countryName = document.createElement('h2');
-//     const countryCapital = document.createElement('h4');
-//     const currencyElem = document.createElement('p');
+const urlCountry = "https://ipapi.co/json/";
+const urlFlag = "https://restcountries.com/v2/name/"
 
-//     countryName.innerText = country_name;
-//     countryCapital.innerText = country_capital;
-//     currencyElem.innerText = currency;
+const renderData = (country_name, country_capital, currency, flag) => {
+    const containerData = document.createElement('div');
+    const countryName = document.createElement('h2');
+    const countryCapital = document.createElement('h4');
+    const currencyElem = document.createElement('p');
+    const flagElem = document.createElement('img');
 
-//     containerData.append(countryName, countryCapital, currencyElem)
-//     document.body.append(containerData);
-// }
+    countryName.innerText = country_name;
+    countryCapital.innerText = country_capital;
+    currencyElem.innerText = currency;
+    flagElem.src = flag;
+
+    containerData.append(countryName, countryCapital, currencyElem, flagElem)
+    document.body.append(containerData);
+}
 // async function getData() {
 //     let response = await fetch('https://ipapi.co/json/');
     
@@ -23,9 +26,11 @@
 //       let data = await response.json();
 //       renderData(data)
 //       console.log('data',data);
-//       let flagResp = await getFlag()
-//       console.log(`flagResp`, flagResp)
+//        getFlag()
+      
+//       // console.log(`flagResp`, flagResp)
 //       return data
+      
 //     } else {
 //       alert('error', response.status);
 //     }
@@ -33,98 +38,134 @@
    
 // getData();
 
-
-// const renderFlag = () => {
-//   const flagImg = document.createElement('img');
-//   flagImg.innerHTML = `<img src="" alt=""></img>`;
+// async function getFlag () {
+//   let responseFlag = await fetch(`https://restcountries.com/v3.1/name/{ukraine}`);
   
-
-
-// }
-
-// async function getFlag (country_name) {
-//   let responseFlag = await fetch(`https://restcountries.com/v2/name/${country_name}`);
 //   if (responseFlag.ok) {
 //     let flag = await responseFlag.json();
-//     renderFlag()
+  
 //     console.log('flag',flag);
 //     return flag
 //   } else {
 //     alert('error', responseFlag.status);
 //   }
 // }
-// // getFlag(country_name)
+
+const getCountryData = async() => {
+  const responseIP = await fetch (`${urlCountry}`);
+  const resultIP =  await responseIP.json();
+  const {country_name, country_capital, currency} = resultIP;
+
+  const responseFlag = await fetch (`${urlFlag}/${country_name}`);
+  const resultFlag = await responseFlag.json();
+  const [{flag}] = resultFlag;
+
+  renderData(country_name, country_capital, currency, flag)
+}
+getCountryData()
+
 
 
 // task 2
 
-const swapiDev = 'https://swapi.dev/api/people';
+// const swapiDev = 'https://swapi.dev/api/people';
 
-const findCharacterBtn = document.getElementById('btn')
-const form = document.getElementById('form')
-const inputCharacter = document.getElementById('characterId');
+// const container = document.getElementById('container');
+// const findCharacterBtn = document.getElementById('btn')
+// const form = document.getElementById('form');
+// const inputCharacter = document.getElementById('characterId');
 
-const renderCharacter = (characterName) => {
-  const {name}= characterName;
-  const nameCharacter = document.createElement('h2');
-  const genderElem = document.createElement('p');
-
-  nameCharacter.innerText = name;
+// const renderCharacter = (characterName) => {
+//   const {name}= characterName;
+//   const nameCharacter = document.createElement('h2');
+  
+//   nameCharacter.innerText = name;
+  
+//   const showFilmsBtn = document.createElement('button');
+//   showFilmsBtn.classList.add('showBtn')
+//   showFilmsBtn.innerText = 'Show Films'
     
-  document.body.append(nameCharacter);
+//   container.append(nameCharacter, showFilmsBtn);
+//   document.body.append(container)
 
-};
+//   showFilmsBtn.addEventListener('click', () => {
+//     const characterId=inputCharacter.value
 
-findCharacterBtn.addEventListener('click', () => {
+//     const title = async (url)=>{
+//       const titleResponse = await fetch (url)
+//       const titleResult = await titleResponse.json();
+//       const {title} = titleResult;
 
-  const characterId=inputCharacter.value
+//       const cardContainer = document.createElement('div');
+//       cardContainer.classList.add('card');
+//       const text = document.createElement('p');
+//       text.innerText = title;
+//       cardContainer.append(text)
+//       document.body.append(cardContainer)
+//       console.log(`title`, title)
+//     }
+    
+    
+    
+//     const getFilms = async (characterId) => {
+      
+//       const responseFilms = await fetch(`${swapiDev}/${characterId}`);
+//       const resultFilms = await responseFilms.json();
+//       console.log(`resultFilms`, resultFilms)
 
-  async function getCharacterName (){
-    let response = await fetch (`${swapiDev}/${characterId}`);
-    if (response.ok) {
-      let characterName = await response.json();
-      renderCharacter(characterName)
-      console.log('characterName',characterName);
-      return characterName
-    } else {
-      alert('error', response.status);
-    }
-  }
-  getCharacterName();
+//       const{films} = resultFilms;
+//       const arr = await films.map((film) => {
+//         return new Promise ((resolve) => {
+//           resolve(film)
+//         })
+//       })
+//       console.log(`arr`, arr)
 
-  const showFilmsBtn = document.createElement('button');
-  showFilmsBtn.innerText = 'Show Films'
+//       Promise.all(arr).then((film) => {
+//         film.forEach((url)=> {
+//           title(url)
+//         })
+//         console.log(`film`, film)
 
-  document.body.after(showFilmsBtn);
+//       })
+
+      
+
+//     }
+//     getFilms(characterId)
+
+    
+//   })
+
+// };
+
+// findCharacterBtn.addEventListener('click', () => {
+
+//   const characterId=inputCharacter.value
+
+//   async function getCharacterName (){
+//     let response = await fetch (`${swapiDev}/${characterId}`);
+
+//     const update = container.querySelector('.card');
+//     if (update){
+//       update.remove()
+//     }
+//     if (response.ok) {
+//       let characterName = await response.json();
+//       renderCharacter(characterName)
+//       console.log('characterName',characterName);
+//       return characterName
+//     } else {
+//       alert('error', response.status);
+//     }
+//   }
+//   getCharacterName()
+
   
-    showFilmsBtn.addEventListener('click', () => {
-      const filmsUrls = [];
-      async function getFilms () {
-        const requests = filmsUrls.map((filmUrl) => fetch(filmUrl));
-        const responses = await Promise.all(requests);
-        const jsonResponses = responses.map(resp => resp.json());
-        const result = await Promise.all(jsonResponses);
 
-        renderAllFilms({result : result});
+ 
+// });
 
-        console.log(`result`, result);
-        console.log(`requests`, requests);
-        console.log(`responses`, responses);
-        console.log(`result`, result)
-      }
-      getFilms()
-
-      const renderAllFilms = (films) => {
-        const allFilms = document.createElement('h3');
-        allFilms.innerText = films;
-
-        document.body.append(allFilms);
-
-        // films.forEach((filmElem) = renderAllFilms(filmElem))
-      }
-    })
-  
-});
 
 
     
