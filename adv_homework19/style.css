@@ -1,12 +1,13 @@
 .input{
   padding: 5px;
+  margin-right: 5px;
 }
 .text{
   font-size: 20px;
   font-weight: 500;
 }
 .btn{
-  padding: 5px;
+  padding: 7px;
   background: rgb(165, 165, 248);
   border: none;
  
