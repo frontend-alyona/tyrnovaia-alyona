@@ -1,0 +1,11 @@
+#select, #inputId, #btn{
+    padding: 5px;
+    font-size: 15px;
+    color: black;
+    background: rgb(243, 243, 208);
+    border: none;
+}
+#btn:hover, #select:hover, #inputId:hover{
+    color: black;
+    background: rgb(241, 243, 99);
+}
