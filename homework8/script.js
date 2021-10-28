@@ -50,12 +50,12 @@ function getExtraN (array) {
 
   if (odd.length !== 1 && even.length !== 1) {
   } else {
-    findOddNum = (odd.length === 1 ? odd[0] : even[0]);
+    return (odd.length === 1 ? odd[0] : even[0]);
 
     
   }
-  // console.log(findOddNum);
-  return findOddNum;
+  console.log(findOddNum);
+  
 }
 
 getExtraN([0, 1, 2]); 

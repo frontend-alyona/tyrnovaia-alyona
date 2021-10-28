@@ -11,6 +11,7 @@ document.onmouseover = function(event) {
     let coords = target.getBoundingClientRect();
     
     let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
+    
     let top = coords.top - tooltipElem.offsetHeight - 20;
     
     tooltipElem.style.left = left + 'px';

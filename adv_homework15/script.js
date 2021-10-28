@@ -38,8 +38,12 @@ const response = {
   console.log(`getTotal`, getTotal);
 
 
-  const getIsActive = response.data.filter(({is_active: isActive}) =>isActive === true  || isActive === false);
+  // const getIsActive = response.data.filter(({is_active: isActive}) =>isActive === true  || isActive === false);
+  const getIsActive = response.data.filter(({is_active: isActive}) =>isActive);
   console.log(`getIsActive`, getIsActive);
+
+  
+  
     
 
 

@@ -64,12 +64,13 @@ const renderPosts = (post) => {
     showBtnElem.addEventListener('click', (event) => {
         event.preventDefault();
 
-        const commentXhr = new XMLHttpRequest();
-        commentXhr.open('GET', `${BASE_URL}/${id}/comments`);
-        commentXhr.responseType = 'json';
-        commentXhr.send();
+        
 
         if (btnAtr.commentsShown === 'false'){
+            const commentXhr = new XMLHttpRequest();
+            commentXhr.open('GET', `${BASE_URL}/${id}/comments`);
+            commentXhr.responseType = 'json';
+            commentXhr.send();
             commentXhr.onload = () => {
                 console.log(commentXhr.response);
                 const {response: comments} = commentXhr;

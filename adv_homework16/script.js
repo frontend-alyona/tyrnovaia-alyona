@@ -16,23 +16,17 @@ const pageLoads = () => {
 };
 
 const firstVisit = () => {
-  localStorage.setItem("greeted", true);
+  localStorage.setItem("greeted", '');
 
-  if (localStorage.getItem("greeted") !== true);
+  if (localStorage.getItem("greeted") !== null){
+    renderGreeting()
+  }
     
-  renderGreeting();
+  
   pageLoads();
 }
 
 firstVisit();
 
-// const pageLoads = () => {
-//   const loaded = parseInt(localStorage.getItem('loaded'), 10),
-//   loadedNumb = loaded?loaded+1:1;
-//     localStorage.setItem('loaded', loadedNumb);
 
-//     document.body.append('Вы заходили раз: '+loadedNumb+'');
-    
-// }
-// pageLoads();
 

@@ -28,20 +28,22 @@ function countdown() {
   }
 };
 
-
-
-
 const startBtn = document.querySelector('.start');
 const stopBtn = document.querySelector('.stop');
 
 const handleStart = (showTimeEnd) => {
+  countdown()
   stopWatch = setInterval(countdown, 1000);
   startBtn.disabled = true;
 
   return new Promise ((resolve) => {
     setInterval(() => {
+      if(timer > 0){
+        console.log(`Time is on pause!`)
+      };
       resolve()  
-    }, showTimeEnd)
+      clearInterval(stopWatch);
+    },showTimeEnd)
   })
   
 };
@@ -49,27 +51,26 @@ const handleStart = (showTimeEnd) => {
 
 const handleStop = () => {
   clearInterval(stopWatch);
-  timer =0
   startBtn.disabled = false;
 
  
 };
 
+
 startBtn.addEventListener('click', () => {
-  handleStart(6000).then(() => {
-    console.log(`Time is up!`)
-    
+  
+  handleStart(5500).then(() => {
+    if(timer == 0){
+      console.log(`Time is up!`)
+    }
   });
+
+  
 });
 
 stopBtn.addEventListener('click', handleStop);
 
-
-
 countdown();
-
-
-
 
 
 
