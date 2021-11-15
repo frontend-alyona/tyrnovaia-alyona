@@ -185,7 +185,7 @@ const makeForm = (arr) => {
       inputElement.setAttribute('type', items.element);
       inputElement.setAttribute('name', items.name);
       inputElement.setAttribute('id', items.name);
-      labelElement.style = 'width: 60px;' + 'display: inline-block;';
+      labelElement.classList.add('labelElement')
       containerElement.append(inputElement);
       containerElement.style = ''
     }
